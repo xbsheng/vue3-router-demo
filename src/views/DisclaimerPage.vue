@@ -8,19 +8,19 @@
   </div>
 </template>
 
-<script>
-import { agreedToDisclaimerKey } from '@/router/index'
-export default {
-  methods: {
-    agree() {
-      localStorage.setItem(agreedToDisclaimerKey, 'true');
-      this.$router.push({ name: 'Home' });
-    },
-    exit() {
-      // 用户选择退出，可以关闭应用或者返回到某个登录页面等。
-      alert('您已退出应用');
-      window.close();
-    }
-  }
-}
+<script setup lang="ts">
+import { useRouter } from 'vue-router';
+import { agreedToDisclaimerKey } from '@/router/index';
+
+const router = useRouter();
+
+const agree = () => {
+  localStorage.setItem(agreedToDisclaimerKey, 'true');
+  router.push({ name: 'Home' });
+};
+
+const exit = () => {
+  alert('您已退出应用');
+  window.close();
+};
 </script>
